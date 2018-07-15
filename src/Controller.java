@@ -1,4 +1,7 @@
+import com.sun.org.apache.bcel.internal.generic.GOTO;
+
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 class Controller {
     Controller() {
@@ -6,7 +9,13 @@ class Controller {
 
     int choiceMenu(Scanner scanner) {
         String choiceString = scanner.nextLine();
-        int choiceInt = Integer.parseInt(choiceString);
+        int choiceInt;
+        if (Pattern.matches("[1-6]", choiceString)) {
+            choiceInt = Integer.parseInt(choiceString);
+        } else {
+            badDataEntered();
+            choiceInt = choiceMenu(scanner);
+        }
         return choiceInt;
     }
 
@@ -41,5 +50,10 @@ class Controller {
         }
         return -1;
     }
+
+    private void badDataEntered() {
+        System.out.println("Bad data entered try again");
+    }
+
 
 }
