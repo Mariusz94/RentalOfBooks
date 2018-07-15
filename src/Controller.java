@@ -1,4 +1,3 @@
-import com.sun.org.apache.bcel.internal.generic.GOTO;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
